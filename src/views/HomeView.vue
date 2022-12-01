@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import ProgressBars from '../components/ProgressBars.vue';
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <div class="text-lg text-blue-700">Home View</div>
+    <ProgressBars />
   </main>
 </template>
