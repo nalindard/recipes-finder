@@ -5,8 +5,7 @@ import NavBar from './components/NavBar.vue';
 
 <template>
   <div class="flex flex-col">
-    <NavBar />
-    <br>
-    <router-view />
+    <NavBar class="fixed top-0"/>
+    <router-view class="mt-16"/>
   </div>
 </template>

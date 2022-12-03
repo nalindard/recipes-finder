@@ -1,10 +1,12 @@
 <script setup>
 import SearchBar from '../components/SearchBar.vue';
 import Letter from '../components/Letter.vue'
+import CountriesList from '../components/CountriesList.vue';
 import IngredientCard from '../components/IngredientCard.vue'
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const Letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',]
+const Countries = ["American","British","Canadian","Chinese","Croatian","Dutch","Egyptian","French","Greek","Indian","Irish","Italian"]
 const Ingredients = ['suger', 'cocoa-butter', 'milk', 'chocolate', 'soy', 'salt', 'egg', 'paper']
 function search({ input }) {
     router.push({
@@ -32,8 +34,17 @@ function search({ input }) {
             </div>
         </div>
 
+        <h2 class="text-xl font-semibold text-slate-800 mb-4 mt-7">Search by country...</h2>
+        <div class="flex bg-slate-200 mb-12 flex-wrap">
+            <div v-for="countrie in Countries" :key="{ countrie }">
+                <router-link :to="{ name: 'countries', params: { countrie: countrie } }">
+                    <CountriesList :countrie="countrie"/>
+                </router-link>
+            </div>
+        </div>
+
         <h2 class="text-xl font-semibold text-slate-800 mb-4">Search by ingredient...</h2>
-        <div class="flex bg-slate-700">
+        <div class="flex bg-slate-700 flex-wrap">
             <div v-for="ingredient in Ingredients" :key="ingredient">
                 <router-link :to="{ name: 'ingredients', params: { ingredient: ingredient } }">
                     <IngredientCard :ingredient="ingredient"/>
