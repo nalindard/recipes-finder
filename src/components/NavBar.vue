@@ -2,17 +2,19 @@
 </script>
 
 <template>
-    <nav class="bg-slate-200 font-bold w-full p-2  flex justify-between items-center">
-        <div class="text-2xl uppercase font-bold text-yellow-900">
-            <router-link :to="{ name: 'home' }">Sweet-🍍</router-link>
+    <nav class="bg-slate-300 font-bold w-full py-2 px-7  flex justify-between items-center bg-opacity-70 backdrop-blur-sm">
+        <div class="md:text-2xl text-xl uppercase font-bold text-slate-600">
+            <router-link :to="{ name: 'home' }">Recipes</router-link>
         </div>
-        <div class="px-4 py-2 text-xl text-yellow-900">
-            <router-link :to="{ name: 'search' }" class="px-2 hover:text-yellow-700">Search</router-link>
-            <router-link :to="{ name: 'about' }" class="hover:text-yellow-700">About</router-link>
+        <div class="px-4 py-2 md:text-xl text-lg text-slate-600">
+            <router-link :to="{ name: 'search' }" class="pr-4 hover:text-slate-900 uppercase">Search</router-link>
+            <router-link :to="{ name: 'about' }" class="hover:text-slate-900 uppercase">About</router-link>
         </div>
     </nav>
 </template>
 
 <style scoped>
-
+nav{
+    z-index: 100;
+}
 </style>

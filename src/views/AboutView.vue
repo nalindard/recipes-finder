@@ -1,9 +1,9 @@
 <script setup></script>
 
 <template>
-    <div class=" bg-slate-200">
-        <h2 class="text-7xl px-4 mb-4 font-semibold text-slate-600">About Page</h2>
-        <p class="px-4 py-8 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum possimus
+    <div class=" bg-slate-50 px-7 pt-8 min-h-full">
+        <h2 class="md:text-7xl text-5xl text-center md:text-start px-4 py-4 mb-4 font-semibold text-slate-600 bg-slate-200">About Page</h2>
+        <p class="py-8 px-4 text-lg text-slate-600 text-justify bg-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum possimus
             praesentium saepe!
             Illum itaque ex
             temporibus expedita vitae fuga quaerat eum blanditiis. Molestiae ipsum architecto pariatur, modi nisi culpa

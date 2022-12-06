@@ -18,14 +18,14 @@ getData()
 </script>
 
 <template>
-    <div>
-        <div class="bg-slate-200">
-            <h2 class="text-5xl uppercase text-slate-700">Searched for <span class="text-red-500">
-                    {{ search }}
-                </span> !</h2>
+    <div class="bg-slate-50 min-h-full pt-12 px-12">
+        <div >
+            <h2 class="md:text-5xl sm:text-3xl text-xl px-4 uppercase text-slate-700 py-8 bg-slate-100 text-center rounded">Showing all the recipes for
+                <span class="text-red-500 font-semibold">"{{ search }}"</span> !
+            </h2>
         </div>
         <div class="flex flex-wrap w-full">
-            <div v-for="meal in data.meals" :key="meal.idMeal" class="w-4/12">
+            <div v-for="meal in data.meals" :key="meal.idMeal" class="lg:w-3/12 md:w-4/12 sm:w-2/4 w-full">
                 <RecipeCard :data="{
                     id: meal.idMeal,
                     name: meal.strMeal,
