@@ -1,36 +1,37 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { markRaw, ref, watch } from "vue";
 import { useRoute } from "vue-router";
+import RecipeCard from "../components/RecipeCard.vue";
 
 const route = useRoute()
-const viewBy = ref('')
-const searchFor = ref('')
+const search = route.query.search
 
-onMounted(() => {
-    if (route.params.ingredient) viewBy.value = 'byIngredient'
-    if (route.params.key) viewBy.value = 'byKey'
-    if (route.query.search) viewBy.value = 'bySearch'
-})
+const data = ref([])
+
+
+async function getData() {
+    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+    data.value = await res.json()
+}
+getData()
+
 </script>
 
 <template>
     <div>
-        <div class="bg-slate-200" v-if="viewBy === 'byKey'">
-            <h2 class="text-5xl uppercase text-slate-700">List all the recipes for letter
-                <span class="text-red-500">{{ route.params.key }}</span> here!
-            </h2>
-        </div>
-        <!-- --------------------- -->
-        <div class="bg-slate-200" v-if="viewBy === 'byIngredient'">
-            <h2 class="text-5xl uppercase text-slate-700">List all the recipes for ingredient
-                <span class="text-red-500"> {{ route.params.ingredient }} </span> here!
-            </h2>
-        </div>
-        <!-- --------------------- -->
-        <div class="bg-slate-200" v-if="viewBy === 'bySearch'">
+        <div class="bg-slate-200">
             <h2 class="text-5xl uppercase text-slate-700">Searched for <span class="text-red-500">
-                    {{ route.query.search }}
+                    {{ search }}
                 </span> !</h2>
+        </div>
+        <div class="flex flex-wrap w-full">
+            <div v-for="meal in data.meals" :key="meal.idMeal" class="w-4/12">
+                <RecipeCard :data="{
+                    id: meal.idMeal,
+                    name: meal.strMeal,
+                    img: meal.strMealThumb
+                }" />
+            </div>
         </div>
     </div>
 </template>
