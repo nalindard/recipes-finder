@@ -1,14 +1,5 @@
 <script setup>
-// import { markRaw } from 'vue';
-// import { useRecipeStore } from '../stores/RecipeStore';
-
-// const recipeStore = useRecipeStore()
-
-// recipeStore.getCountries()
-// const list = recipeStore.countrieList.meals
-// console.log('HomeView -- ', list)
 const name = '???'
-// const feedList = ['Trending', 'Popular', 'Vegetarian', 'Meety', 'Also search for']
 const feedList = ['Trending', 'Popular', 'Also search for',]
 
 </script>
@@ -52,10 +43,6 @@ const feedList = ['Trending', 'Popular', 'Also search for',]
 
 .banner h2 {
   font-family: 'Amita', cursive;
-  /* background: linear-gradient(rgb(255, 255, 255),rgb(0, 26, 255)); */
-  /* -webkit-background-clip: text; */
-  /* background-clip: text; */
-  /* -webkit-text-fill-color: transparent; */
 }
 
 
