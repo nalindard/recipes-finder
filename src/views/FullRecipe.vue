@@ -53,14 +53,14 @@ function clearIngredients(data) {
             <div class="flex justify-start items-start md:w-6/12 w-full ">
                 <!-- <div class="w-full"> -->
                 <div class=" w-full flex justify-center flex-col ">
-                    <div class="md:w-5/6 w-full text-justify bg-slate-200 px-4">
+                    <div class="md:w-5/6 w-full text-justify bg-slate-200 px-4 text-ellipsis overflow-clip">
                         <!-- <h4 class="hidden">{{ data.idMeal }}</h4> -->
                         <h4 class="md:text-2xl text-lg text-slate-600 font-bold pt-2">Recipe From: {{ data.strArea }}</h4>
                         <h4 class="md:text-2xl text-lg text-slate-600 font-bold pt-2">Category: {{ data.strCategory }}</h4>
                         <!-- <h4 class="hidden">{{ data.strMeal }}</h4> -->
                         <!-- <h4>{{ data.strInstructions }}</h4> -->
                         <!-- <h4 class="hidden">{{ data.strMealThumb }}</h4> -->
-                        <h4 class="md:text-2xl text-lg text-slate-600 font-bold uppercase py-2">Tags: {{ data.strTags }}</h4>
+                        <h4 class="md:text-2xl text-lg text-slate-600 font-bold uppercase py-2 text-ellipsis">Tags: {{ data.strTags }}</h4>
                         <iframe :href="data.strYoutube" class="w-full h-24 bg-red-400 hidden"></iframe>
                     </div>
                     <div class="md:w-5/6 w-full pt-7">

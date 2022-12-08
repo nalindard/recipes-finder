@@ -5,7 +5,7 @@ import CountriesList from '../components/CountriesList.vue';
 import IngredientCard from '../components/IngredientCard.vue'
 import { useRouter } from 'vue-router';
 import { useRecipeStore } from '../stores/RecipeStore';
-import { ref, watch } from 'vue';
+import { reactive, ref, watch } from 'vue';
 
 const recipeStore = useRecipeStore()
 recipeStore.getCountries()
@@ -13,26 +13,24 @@ recipeStore.getIngredients()
 
 const coun = ref([])
 const ingre = ref([])
+const Letters = recipeStore.letterList
 
-setTimeout(() => {
-    coun.value = recipeStore.countrieList.meals.map(c => c.strArea)
-    // console.log('Countri list', coun.value);
+let intervelID = setInterval(() => {
+    let Cloading = recipeStore.cLoading ? true : false
+    let Iloading = recipeStore.iLoading ? true : false
 
-    ingre.value = recipeStore.ingreList_2.meals.map(i => i.strIngredient)
-    // console.log('Ingre list', ingre.value);
-}, 4000);
+    console.log('Loading --> ');
 
+    if (!Cloading) coun.value = recipeStore.countriNames.sort()
+    if (!Iloading) ingre.value = recipeStore.ingreNames.sort()
+    if (!Cloading && !Iloading) clearInterval(intervelID)
 
+}, 100);
 
 const router = useRouter()
-const Letters = recipeStore.letterList
-const Ingredients = recipeStore.ingreList
 function search({ input }) {
     router.push({
         name: 'list',
-        // params: {
-        //     view: input
-        // },
         query: {
             search: input
         }
@@ -59,8 +57,8 @@ function search({ input }) {
 
         <!-- Country List -->
         <h2 class="md:text-3xl text-2xl bg-slate-300 px-4 py-7 font-semibold text-white  mt-7">Search by country...</h2>
-        <div class="flex bg-slate-200 mb-12 flex-wrap justify-around px-4 py-7 rounded">
-            <div v-for="countrie in coun" :key="{ countrie }">
+        <div class="flex bg-slate-200 mb-12 flex-wrap md:justify-around justify-evenly  px-4 py-7 rounded">
+            <div v-for="countrie in coun" :key="{ countrie }" class="flex-grow w-2/5 md:w-4/12 lg:w-3/12">
                 <router-link :to="{ name: 'countries', params: { countrie: countrie } }">
                     <CountriesList :countrie="countrie" />
                 </router-link>
@@ -70,7 +68,7 @@ function search({ input }) {
         <!-- Ingredient List -->
         <h2 class="md:text-3xl text-2xl bg-slate-300 px-4 py-7 font-semibold text-white ">Search by ingredient...</h2>
         <div class="flex bg-slate-200 flex-wrap justify-around px-4 py-7 rounded">
-            <div v-for="ingredient in ingre" :key="ingredient">
+            <div v-for="ingredient in ingre" :key="ingredient" class="flex-grow">
                 <router-link :to="{ name: 'ingredients', params: { ingredient: ingredient } }">
                     <IngredientCard :ingredient="ingredient" />
                 </router-link>

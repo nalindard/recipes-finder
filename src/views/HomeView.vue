@@ -17,7 +17,9 @@ const feedList = ['Trending', 'Popular', 'Also search for',]
   <main>
     <div class="banner-img">
       <div class="banner flex flex-col justify-center items-center h-screen relative">
-        <h2 class="text-slate-50 md:text-9xl text-5xl font-bold text-center">Welcome to {{ name }}!</h2>
+        <transition appear name="fade">
+          <h2 class="text-slate-50 md:text-9xl text-5xl font-bold text-center">Welcome to {{ name }}!</h2>
+        </transition>
         <div class="absolute bottom-28 text-center">
           <h4 class="text-slate-50 text-xl italic">Search for any of your favorite recipe using</h4>
           <h4 class="text-slate-50 text-xl italic">Name, Ingredients </h4>
@@ -54,5 +56,22 @@ const feedList = ['Trending', 'Popular', 'Also search for',]
   /* -webkit-background-clip: text; */
   /* background-clip: text; */
   /* -webkit-text-fill-color: transparent; */
+}
+
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: opacity 3s ease;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition: opacity 3s ease;
 }
 </style>
